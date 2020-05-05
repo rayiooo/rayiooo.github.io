@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://www.rayiooo.top</id>
+    <id>http://www.rayiooo.top</id>
     <title>猫崎板子</title>
-    <updated>2020-05-05T14:54:01.667Z</updated>
+    <updated>2020-05-05T14:54:25.020Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://www.rayiooo.top"/>
-    <link rel="self" href="https://www.rayiooo.top/atom.xml"/>
+    <link rel="alternate" href="http://www.rayiooo.top"/>
+    <link rel="self" href="http://www.rayiooo.top/atom.xml"/>
     <subtitle>いらっしゃいませ</subtitle>
-    <logo>https://www.rayiooo.top/images/avatar.png</logo>
-    <icon>https://www.rayiooo.top/favicon.ico</icon>
+    <logo>http://www.rayiooo.top/images/avatar.png</logo>
+    <icon>http://www.rayiooo.top/favicon.ico</icon>
     <rights>All rights reserved 2020, 猫崎板子</rights>
     <entry>
         <title type="html"><![CDATA[Joint Computation and Communication Cooperation for Energy-Efficient Mobile Edge Computing 论文笔记]]></title>
-        <id>https://www.rayiooo.top/post/joint-computation-and-communication-cooperation-for-energy-efficient-mobile-edge-computing-lun-wen-bi-ji/</id>
-        <link href="https://www.rayiooo.top/post/joint-computation-and-communication-cooperation-for-energy-efficient-mobile-edge-computing-lun-wen-bi-ji/">
+        <id>http://www.rayiooo.top/post/joint-computation-and-communication-cooperation-for-energy-efficient-mobile-edge-computing-lun-wen-bi-ji/</id>
+        <link href="http://www.rayiooo.top/post/joint-computation-and-communication-cooperation-for-energy-efficient-mobile-edge-computing-lun-wen-bi-ji/">
         </link>
         <updated>2020-05-05T14:40:33.000Z</updated>
         <summary type="html"><![CDATA[<p>本文研究了移动边缘计算（MEC）中计算卸载（computation offloading）的优化问题。在边缘网络中如何分配用户的计算任务可以使整体耗电量最小？本文针对 User - Helper - AP 三点式模型求解这个问题的最优解。通过构建一个线性规划问题和一个非线性规划问题来分别解可分割任务和不可分割任务的最优耗电量，并使用拉格朗日乘子法和 KKT 条件等方法求出结果，以达到节约设备用电的目的。这篇文章没有什么特别的亮点，仅仅是 LP 问题的一个应用。</p>
@@ -87,8 +87,8 @@
     </entry>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://www.rayiooo.top/post/hello-gridea/</id>
-        <link href="https://www.rayiooo.top/post/hello-gridea/">
+        <id>http://www.rayiooo.top/post/hello-gridea/</id>
+        <link href="http://www.rayiooo.top/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
