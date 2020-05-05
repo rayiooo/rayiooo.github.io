@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://rayiooo.github.io</id>
+    <id>https://www.rayiooo.top</id>
     <title>猫崎板子</title>
-    <updated>2020-05-05T14:08:43.810Z</updated>
+    <updated>2020-05-05T14:38:43.512Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://rayiooo.github.io"/>
-    <link rel="self" href="https://rayiooo.github.io/atom.xml"/>
+    <link rel="alternate" href="https://www.rayiooo.top"/>
+    <link rel="self" href="https://www.rayiooo.top/atom.xml"/>
     <subtitle>いらっしゃいませ</subtitle>
-    <logo>https://rayiooo.github.io/images/avatar.png</logo>
-    <icon>https://rayiooo.github.io/favicon.ico</icon>
+    <logo>https://www.rayiooo.top/images/avatar.png</logo>
+    <icon>https://www.rayiooo.top/favicon.ico</icon>
     <rights>All rights reserved 2020, 猫崎板子</rights>
     <entry>
         <title type="html"><![CDATA[Hello Gridea]]></title>
-        <id>https://rayiooo.github.io/post/hello-gridea/</id>
-        <link href="https://rayiooo.github.io/post/hello-gridea/">
+        <id>https://www.rayiooo.top/post/hello-gridea/</id>
+        <link href="https://www.rayiooo.top/post/hello-gridea/">
         </link>
         <updated>2018-12-11T16:00:00.000Z</updated>
         <summary type="html"><![CDATA[<p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
