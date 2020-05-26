@@ -1,0 +1,449 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    
+<meta charset="utf-8" >
+
+<title>信息检索课程设计之 SDU新闻网站Python全站爬取+索引构建+搜索引擎 | 猫崎板子</title>
+<meta name="description" content="いらっしゃいませ">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<link rel="shortcut icon" href="https://www.rayiooo.top/favicon.ico?v=1590464685490">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="stylesheet" href="https://www.rayiooo.top/styles/main.css">
+
+
+  
+    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
+  
+
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-145147913-2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'UA-145147913-2');
+</script>
+
+
+  </head>
+  <body>
+    <div id="app" class="main">
+      <div class="site-header-container">
+  <div class="site-header">
+    <div class="left">
+      <a href="https://www.rayiooo.top">
+        <img class="avatar" src="https://www.rayiooo.top/images/avatar.png?v=1590464685490" alt="" width="32px" height="32px">
+      </a>
+      <a href="https://www.rayiooo.top">
+        <h1 class="site-title">猫崎板子</h1>
+      </a>
+    </div>
+    <div class="right">
+      <transition name="fade">
+        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
+      </transition>
+    </div>
+  </div>
+</div>
+
+<transition name="fade">
+  <div class="menu-container" style="display: none;" v-show="menuVisible">
+    <div class="menu-list">
+      
+        
+          <a href="/" class="menu purple-link">
+            首页
+          </a>
+        
+      
+        
+          <a href="/archives" class="menu purple-link">
+            归档
+          </a>
+        
+      
+        
+          <a href="/tags" class="menu purple-link">
+            标签
+          </a>
+        
+      
+        
+          <a href="/post/about" class="menu purple-link">
+            关于
+          </a>
+        
+      
+    </div>
+  </div>
+</transition>
+
+
+      <div class="content-container">
+        <div class="post-detail">
+          
+          <h2 class="post-title">信息检索课程设计之 SDU新闻网站Python全站爬取+索引构建+搜索引擎</h2>
+          <div class="post-info post-detail-info">
+            <span><i class="icon-calendar-outline"></i> 2020-05-26</span>
+            
+          </div>
+          <div class="post-content">
+            <p>信息检索课程设计<a href="http://view.sdu.edu.cn/">sdu视点新闻</a>全站Python爬虫爬取+索引构建+搜索引擎查询练习程序（1805）。</p>
+<p>以前在gh仓库总结的内容，没想到被人转载不带出处，不如我自己来发一遍叭。</p>
+<!-- more -->
+<p>源代码：<a href="https://github.com/rayiooo/SduViewWebSpider">Github</a></p>
+<blockquote>
+<p>爬虫功能使用Python的scrapy库实现，并用MongoDB数据库进行存储。</p>
+<p>索引构建和搜索功能用Python的Whoosh和jieba库实现。（由于lucene是java库，所以pyLucene库的安装极其麻烦，因此选用Python原生库Whoosh实现，并使用jieba进行中文分词。）</p>
+<p>搜索网页界面用django实现，页面模板套用<a href="http://www.bootcdn.cn/">BootCDN</a>。</p>
+</blockquote>
+<h2 id="1-要求">1 要求</h2>
+<p>以下是检索的基本要求：可以利用lucene、nutch等开源工具，利用Python、Java等编程语言，但需要分别演示并说明原理。</p>
+<ul>
+<li>
+<ol>
+<li><strong>Web网页信息抽取</strong><br>
+以山东大学新闻网为起点进行网页的循环爬取，保持爬虫在view.sdu.edu.cn之内（即只爬取这个站点的网页），爬取的网页数量越多越好。</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li><strong>索引构建</strong><br>
+对上一步爬取到的网页进行结构化预处理，包括基于模板的信息抽取、分字段解析、分词、构建索引等。</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li><strong>检索排序</strong><br>
+对上一步构建的索引库进行查询，对于给定的查询，给出检索结果，明白排序的原理及方法。</li>
+</ol>
+</li>
+</ul>
+<h2 id="2-运行方式">2 运行方式</h2>
+<ul>
+<li>
+<p>运行<code>sduspider/run.py</code>来进行网络爬虫，这个过程将持续十多个小时，但可以随时终止，在下次运行时继续。</p>
+</li>
+<li>
+<p>运行<code>indexbuilder/index_builder.py</code>来对数据库中的72000条数据构建索引，该过程将持续几个小时，但可以随时终止。</p>
+</li>
+<li>
+<p>如果不熟悉Whoosh库的构建索引和query搜索功能，可以参考运行<code>indexbuilder/sample.py</code>。</p>
+</li>
+<li>
+<p>运行<code>indexbuilder/query.py</code>来测试搜索功能。</p>
+</li>
+<li>
+<p>运行<code>searchengine/run_server.py</code>打开搜索网页服务器，在浏览器中打开<a href="127.0.0.1:8000">127.0.0.1:8000</a>进入搜索页面执行搜索。</p>
+</li>
+</ul>
+<h2 id="3-所需python库">3 所需python库</h2>
+<ul>
+<li>scrapy</li>
+<li>requests</li>
+<li>pymongo</li>
+<li>whoosh</li>
+<li>jieba</li>
+<li>django</li>
+</ul>
+<h2 id="4-所需数据库">4 所需数据库</h2>
+<ul>
+<li>MongoDB</li>
+<li>Mongo Management Studio 可视化工具（可选）</li>
+</ul>
+<h2 id="5-爬虫特性">5 爬虫特性</h2>
+<p>爬虫代码位于<code>sduspider/</code>目录下。</p>
+<h3 id="51-爬取内容">5.1 爬取内容</h3>
+<p>爬虫爬取以 <a href="http://www.view.sdu.edu.cn/info/">http://www.view.sdu.edu.cn/info/</a> 打头的所有新闻页面的内容，这些内容包括：</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Item name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>标题</td>
+<td>newsTitle</td>
+</tr>
+<tr>
+<td>链接</td>
+<td>newsUrl</td>
+</tr>
+<tr>
+<td>阅读量</td>
+<td>newsCliek</td>
+</tr>
+<tr>
+<td>发布时间</td>
+<td>newsPublishTime</td>
+</tr>
+<tr>
+<td>文章内容</td>
+<td>newsContent</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-python"># spider.py
+# 爬取当前网页
+        print('start parse : ' + response.url)
+        self.destination_list.remove(response.url)
+        if response.url.startswith(&quot;http://www.view.sdu.edu.cn/info/&quot;):
+            item = NewsItem()
+            for box in response.xpath('//div[@class=&quot;new_show clearfix&quot;]/div[@class=&quot;le&quot;]'):
+                # article title
+                item['newsTitle'] = box.xpath('.//div[@class=&quot;news_tit&quot;]/h3/text()').extract()[0].strip()
+
+                # article url
+                item['newsUrl'] = response.url
+                item['newsUrlMd5'] = self.md5(response.url)
+
+                # article click time
+                item['newsClick'] = box.xpath('.//div[@class=&quot;news_tit&quot;]/p/span/script/text()').extract()[0].strip()
+                pattern = re.compile(r'\(.*?\)')
+                parameters = re.search(pattern, item['newsClick']).group(0)
+                parameters = parameters[1:-1].split(',')
+                parameters[0] = re.search(re.compile(r'\&quot;.*?\&quot;'), parameters[0]).group(0)[1:-1]
+                parameters[1] = parameters[1].strip()
+                parameters[2] = parameters[2].strip()
+                request_url = 'http://www.view.sdu.edu.cn/system/resource/code/news/click/dynclicks.jsp'
+                request_data = {'clicktype': parameters[0], 'owner': parameters[1], 'clickid': parameters[2]}
+                request_get = requests.get(request_url, params=request_data)
+                item['newsClick'] = request_get.text
+
+                # article publish time
+                item['newsPublishTime'] = box.xpath('.//div[@class=&quot;news_tit&quot;]/p[not(@style)]/text()').extract()[0].strip()[5:]
+
+                # article content
+                item['newsContent'] = box.xpath('.//div[@class=&quot;news_content&quot;]').extract()[0].strip()
+                regexp = re.compile(r'&lt;[^&gt;]+&gt;', re.S)
+                item['newsContent'] = regexp.sub('',item['newsContent'])    # delete templates &lt;&gt;
+
+                # 索引构建flag
+                item['indexed'] = 'False'
+
+                # yield it
+                yield item
+</code></pre>
+<h3 id="52-宽度优先搜索爬取">5.2 宽度优先搜索爬取</h3>
+<p>爬虫基于宽度优先搜索，对<a href="http://www.view.sdu.edu.cn/">http://www.view.sdu.edu.cn/</a>区段的网址进行爬取，并将<a href="http://www.view.sdu.edu.cn/info/">http://www.view.sdu.edu.cn/info/</a>区段的新闻内容提取出来。</p>
+<pre><code class="language-python"># settings.py
+# 先进先出，广度优先
+DEPTH_PRIORITY = 1
+SCHEDULER_DISK_QUEUE = 'scrapy.squeue.PickleFifoDiskQueue'
+SCHEDULER_MEMORY_QUEUE = 'scrapy.squeue.FifoMemoryQueue'
+</code></pre>
+<h3 id="53-二分法去重">5.3 二分法去重</h3>
+<p>所有已经爬取过的网址都会以MD5特征的形式顺序存储在list中，当获取新的url时，通过二分法查找list中是否存在该url的特征值，以达到去重的目的。</p>
+<p>Scrapy库自带了查重去重的功能，但为了保证效率，自行编写了二分法去重，但并未关闭scrapy库自带的去重功能。</p>
+<pre><code class="language-python"># spider.py
+# md5 check
+md5_url = self.md5(real_url)
+if self.binary_md5_url_search(md5_url) &gt; -1:    # 二分法查找存在当前MD5
+    pass
+else:
+    self.binary_md5_url_insert(md5_url) # 二分法插入当前MD5
+    self.destination_list.append(real_url)  # 插入爬虫等待序列
+    yield scrapy.Request(real_url, callback=self.parse, errback=self.errback_httpbin)
+</code></pre>
+<h3 id="54-断点续爬">5.4 断点续爬</h3>
+<p>每爬取一定次数后都会将当前爬虫状态存储在pause文件夹下，重新运行爬虫时会继续上一次保存的断点进行爬取。Scrapy有自带的断点续爬功能（在settings.py中设置），但貌似在Pycharm中行不通。</p>
+<pre><code class="language-python"># spider.py
+# counter++，并在合适的时候保存断点
+def counter_plus(self):
+    print('待爬取网址数：' + (str)(len(self.destination_list)))
+    # 断点续爬功能之保存断点
+    if self.counter % self.save_frequency == 0:  # 爬虫经过save_frequency次爬取后
+        print('Rayiooo：正在保存爬虫断点....')
+
+        f = open('./pause/response.seen', 'wb')
+        pickle.dump(self.url_md5_seen, f)
+        f.close()
+
+        f = open('./pause/response.dest', 'wb')
+        pickle.dump(self.destination_list, f)
+        f.close()
+
+        self.counter = self.save_frequency
+
+    self.counter += 1  # 计数器+1
+</code></pre>
+<h3 id="55-数据存入mongodb">5.5 数据存入MongoDB</h3>
+<p>关系类数据库不适用于爬虫数据存储，因此使用非关系类数据库MongoDB。数据库可以用可视化工具方便查看，例如Mongo Management Studio。</p>
+<pre><code class="language-python"># pipelines.py
+class MongoDBPipeline(object):
+    def __init__(self):
+        host = settings[&quot;MONGODB_HOST&quot;]
+        port = settings[&quot;MONGODB_PORT&quot;]
+        dbname = settings[&quot;MONGODB_DBNAME&quot;]
+        sheetname = settings[&quot;MONGODB_SHEETNAME&quot;]
+        # 创建MONGODB数据库链接
+        client = pymongo.MongoClient(host=host, port=port)
+        # 指定数据库
+        mydb = client[dbname]
+        # 存放数据的数据库表名
+        self.post = mydb[sheetname]
+
+    def process_item(self, item, spider):
+        data = dict(item)
+        # self.post.insert(data)    # 直接插入的方式有可能导致数据重复
+        # 更新数据库中的数据，如果upsert为Ture，那么当没有找到指定的数据时就直接插入，反之不执行插入
+        self.post.update({'newsUrlMd5': item['newsUrlMd5']}, data, upsert=True)
+        return item
+</code></pre>
+<figure data-type="image" tabindex="1"><img src="https://i.loli.net/2018/05/24/5b065b225414c.jpg" alt="Mongo Management Studio 可视化工具显示.jpg" loading="lazy"></figure>
+<h2 id="6-索引构建特性">6 索引构建特性</h2>
+<p>索引构建代码位于<code>indexbuilder/</code>目录下。</p>
+<h3 id="61-断点续构">6.1 断点续构</h3>
+<p>构建倒排索引的过程比较缓慢，每小时只能构建10000条新闻的索引，因此在索引构建时及时存储新构建的索引，以保证能够断点续构。</p>
+<h3 id="62-中文分词">6.2 中文分词</h3>
+<p>Whoosh自带的Analyzer分词仅针对英文文章，而不适用于中文。从jieba库中引用的ChineseAnalyzer保证了能够对Documents进行中文分词。同样，ChineseAnalyzer在search时也能够对中文查询query提取关键字并进行搜索。</p>
+<pre><code class="language-python"># index_builder.py
+from jieba.analyse import ChineseAnalyzer
+
+analyzer = ChineseAnalyzer()
+# 创建索引模板
+schema = Schema(
+    newsId=ID(stored=True),
+    newsTitle=TEXT(stored=True, analyzer=analyzer),
+    newsUrl=ID(stored=True),
+    newsClick=NUMERIC(stored=True, sortable=True),
+    newsPublishTime=TEXT(stored=True),
+    newsContent=TEXT(stored=False, analyzer=analyzer),  # 文章内容太长了，不存
+)
+</code></pre>
+<h3 id="63-query类提供搜索api">6.3 Query类提供搜索API</h3>
+<p>Query类自动执行了从index索引文件夹中取倒排索引来执行搜索，并返回一个结果数组。</p>
+<pre><code class="language-python"># query.py
+if __name__ == '__main__':
+    q = Query()
+    q.standard_search('软件园校区')
+</code></pre>
+<h2 id="7-搜索引擎特性">7 搜索引擎特性</h2>
+<p>搜索引擎代码位于<code>searchengine/</code>目录下。</p>
+<h3 id="71-django搭建web界面">7.1 Django搭建Web界面</h3>
+<p>Django适合Web快速开发。result页面继承了main页面，搜索结果可以按照result中的指示显示在页面中。在django模板继承下，改变main.html中的页面布局，result.html的布局也会相应改变而不必使用Ctrl+c、Ctrl+v的方式改变。</p>
+<pre><code class="language-python"># view.py
+def search(request):
+    res = None
+    if 'q' in request.GET and request.GET['q']:
+        res = q.standard_search(request.GET['q'])   # 获取搜索结果
+        c = {
+            'query': request.GET['q'],
+            'resAmount': len(res),
+            'results': res,
+        }
+    else:
+        return render_to_response('main.html')
+
+    return render_to_response('result.html', c) # 展示搜索结果
+</code></pre>
+<figure data-type="image" tabindex="2"><img src="https://i.loli.net/2018/05/24/5b0662e1a68f5.jpg" alt="姜海涛的搜索结果.jpg" loading="lazy"></figure>
+<h3 id="72-搜索迅速">7.2 搜索迅速</h3>
+<p>第一次搜索时，可能因为倒排索引index的取出时间较长而搜索缓慢，但一旦index取出，对于70000余条新闻的搜索将非常迅速，秒出结果。</p>
+<h2 id="参考资料">参考资料</h2>
+<p><a href="https://blog.csdn.net/zjiang1994/article/details/52779537">scrapy爬虫框架入门实例</a></p>
+<p><a href="https://blog.csdn.net/wqh_jingsong/article/details/54981344">笔记：scrapy爬取的数据存入MySQL，MongoDB</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/20938685?utm_source=qq&amp;utm_medium=social&amp;utm_member=MWIxZDY0Nzg4YWQ5ODRkYzhlNzAyMDZiMTgwZTE0NzM%3D%0A">搜索那些事 - 用Golang写一个搜索引擎(0x00) --- 从零开始（分享自知乎网）</a></p>
+<p><a href="https://www.jianshu.com/p/127c8c0b908a">Whoosh + jieba 中文检索</a></p>
+<p><a href="https://www.cnblogs.com/Micang/p/6346437.html">利用whoosh对mongoDB的中文文档建立全文检索</a></p>
+<p><a href="http://www.runoob.com/django/django-first-app.html">Django 创建第一个项目</a></p>
+<p><a href="https://blog.csdn.net/zhangxinrun/article/details/8095118/">Django模板系统(非常详细)</a></p>
+
+          </div>
+        </div>
+
+        
+          <div class="next-post">
+            <a class="purple-link" href="https://www.rayiooo.top/post/joint-computation-and-communication-cooperation-for-energy-efficient-mobile-edge-computing-lun-wen-bi-ji/">
+              <h3 class="post-title">
+                下一篇：Joint Computation and Communication Cooperation for Energy-Efficient Mobile Edge Computing 论文笔记
+              </h3>
+            </a>
+          </div>
+          
+      </div>
+
+      
+        
+          <div id="gitalk-container"></div>
+        
+
+        
+      
+
+      <div class="site-footer">
+  <div class="slogan">いらっしゃいませ</div>
+  <div class="social-container">
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  </div>
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://www.rayiooo.top/atom.xml" target="_blank">RSS</a>
+</div>
+
+
+    </div>
+    <script type="application/javascript">
+
+hljs.initHighlightingOnLoad()
+
+var app = new Vue({
+  el: '#app',
+  data: {
+    menuVisible: false,
+  },
+})
+
+</script>
+
+
+
+  
+    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    <script>
+
+      var gitalk = new Gitalk({
+        clientID: '93abc810d67f36742d48',
+        clientSecret: 'a5ba71cfb2c4bbf8eebf28116087a330aa6f21ba',
+        repo: 'rayiooo.github.io',
+        owner: 'rayiooo',
+        admin: ['rayiooo'],
+        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+        distractionFreeMode: false  // Facebook-like distraction free mode
+      })
+
+      gitalk.render('gitalk-container')
+
+    </script>
+  
+
+  
+
+
+
+
+  </body>
+</html>
