@@ -1,31 +1,13 @@
-
-<!DOCTYPE html>
 <html>
   <head>
-    
-<meta charset="utf-8" >
-
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>信息检索课程设计之 SDU新闻网站Python全站爬取+索引构建+搜索引擎 | 猫崎板子</title>
-<meta name="description" content="いらっしゃいませ">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://www.rayiooo.top/favicon.ico?v=1590480928009">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+<link rel="shortcut icon" href="https://www.rayiooo.top/favicon.ico?v=1590501897192">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://www.rayiooo.top/styles/main.css">
-
-
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<link rel="alternate" type="application/atom+xml" title="信息检索课程设计之 SDU新闻网站Python全站爬取+索引构建+搜索引擎 | 猫崎板子 - Atom Feed" href="https://www.rayiooo.top/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145147913-2"></script>
@@ -38,90 +20,103 @@
 </script>
 
 
+    <meta name="description" content="信息检索课程设计sdu视点新闻全站Python爬虫爬取+索引构建+搜索引擎查询练习程序（1805）。
+以前在gh仓库总结的内容，没想到被人转载不带出处，不如我自己来发一遍叭。
+
+源代码：Github
+
+爬虫功能使用Python的scrapy..." />
+    <meta name="keywords" content="信息检索,爬虫" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
   </head>
   <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://www.rayiooo.top">
-        <img class="avatar" src="https://www.rayiooo.top/images/avatar.png?v=1590480928009" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://www.rayiooo.top">
-        <h1 class="site-title">猫崎板子</h1>
-      </a>
-    </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://www.rayiooo.top">
+  <img class="avatar" src="https://www.rayiooo.top/images/avatar.png?v=1590501897192" alt="">
+  </a>
+  <h1 class="site-title">
+    猫崎板子
+  </h1>
+  <p class="site-description">
+    いらっしゃいませ
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/rayiooo" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
   </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
-
-
-      <div class="content-container">
         <div class="post-detail">
-          
-            <div class="feature-container" style="background-image: url('https://www.rayiooo.top/post-images/xin-xi-jian-suo-ke-cheng-she-ji-zhi-sdu-xin-wen-wang-zhan-quan-zhan-pa-qu-suo-yin-gou-jian-sou-suo-yin-qing.png')">
-            </div>
-          
-          <h2 class="post-title">信息检索课程设计之 SDU新闻网站Python全站爬取+索引构建+搜索引擎</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2020-05-26</span>
-            
+          <article class="post">
+            <h2 class="post-title">
+              信息检索课程设计之 SDU新闻网站Python全站爬取+索引构建+搜索引擎
+            </h2>
+            <div class="post-info">
               <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://www.rayiooo.top/tag/L4uOOS-pg/">
-                    信息检索
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://www.rayiooo.top/tag/RwamQZnlBU/">
-                    爬虫
-                    
-                  </a>
-                
+                2020-05-26
               </span>
+              <span>
+                9 min read
+              </span>
+              
+                <a href="https://www.rayiooo.top/tag/L4uOOS-pg/" class="post-tag">
+                  # 信息检索
+                </a>
+              
+                <a href="https://www.rayiooo.top/tag/RwamQZnlBU/" class="post-tag">
+                  # 爬虫
+                </a>
+              
+            </div>
             
-          </div>
-          <div class="post-content">
-            <p>信息检索课程设计<a href="http://view.sdu.edu.cn/">sdu视点新闻</a>全站Python爬虫爬取+索引构建+搜索引擎查询练习程序（1805）。</p>
+              <img class="post-feature-image" src="https://www.rayiooo.top/post-images/xin-xi-jian-suo-ke-cheng-she-ji-zhi-sdu-xin-wen-wang-zhan-quan-zhan-pa-qu-suo-yin-gou-jian-sou-suo-yin-qing.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p>信息检索课程设计<a href="http://view.sdu.edu.cn/">sdu视点新闻</a>全站Python爬虫爬取+索引构建+搜索引擎查询练习程序（1805）。</p>
 <p>以前在gh仓库总结的内容，没想到被人转载不带出处，不如我自己来发一遍叭。</p>
 <!-- more -->
 <p>源代码：<a href="https://github.com/rayiooo/SduViewWebSpider">Github</a></p>
@@ -130,40 +125,6 @@
 <p>索引构建和搜索功能用Python的Whoosh和jieba库实现。（由于lucene是java库，所以pyLucene库的安装极其麻烦，因此选用Python原生库Whoosh实现，并使用jieba进行中文分词。）</p>
 <p>搜索网页界面用django实现，页面模板套用<a href="http://www.bootcdn.cn/">BootCDN</a>。</p>
 </blockquote>
-<p><ul class="markdownIt-TOC">
-<li>
-<ul>
-<li><a href="#1-%E8%A6%81%E6%B1%82">1 要求</a></li>
-<li><a href="#2-%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F">2 运行方式</a></li>
-<li><a href="#3-%E6%89%80%E9%9C%80python%E5%BA%93">3 所需python库</a></li>
-<li><a href="#4-%E6%89%80%E9%9C%80%E6%95%B0%E6%8D%AE%E5%BA%93">4 所需数据库</a></li>
-<li><a href="#5-%E7%88%AC%E8%99%AB%E7%89%B9%E6%80%A7">5 爬虫特性</a>
-<ul>
-<li><a href="#51-%E7%88%AC%E5%8F%96%E5%86%85%E5%AE%B9">5.1 爬取内容</a></li>
-<li><a href="#52-%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%88%AC%E5%8F%96">5.2 宽度优先搜索爬取</a></li>
-<li><a href="#53-%E4%BA%8C%E5%88%86%E6%B3%95%E5%8E%BB%E9%87%8D">5.3 二分法去重</a></li>
-<li><a href="#54-%E6%96%AD%E7%82%B9%E7%BB%AD%E7%88%AC">5.4 断点续爬</a></li>
-<li><a href="#55-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb">5.5 数据存入MongoDB</a></li>
-</ul>
-</li>
-<li><a href="#6-%E7%B4%A2%E5%BC%95%E6%9E%84%E5%BB%BA%E7%89%B9%E6%80%A7">6 索引构建特性</a>
-<ul>
-<li><a href="#61-%E6%96%AD%E7%82%B9%E7%BB%AD%E6%9E%84">6.1 断点续构</a></li>
-<li><a href="#62-%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D">6.2 中文分词</a></li>
-<li><a href="#63-query%E7%B1%BB%E6%8F%90%E4%BE%9B%E6%90%9C%E7%B4%A2api">6.3 Query类提供搜索API</a></li>
-</ul>
-</li>
-<li><a href="#7-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%89%B9%E6%80%A7">7 搜索引擎特性</a>
-<ul>
-<li><a href="#71-django%E6%90%AD%E5%BB%BAweb%E7%95%8C%E9%9D%A2">7.1 Django搭建Web界面</a></li>
-<li><a href="#72-%E6%90%9C%E7%B4%A2%E8%BF%85%E9%80%9F">7.2 搜索迅速</a></li>
-</ul>
-</li>
-<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</a></li>
-</ul>
-</li>
-</ul>
-</p>
 <h2 id="1-要求">1 要求</h2>
 <p>以下是检索的基本要求：可以利用lucene、nutch等开源工具，利用Python、Java等编程语言，但需要分别演示并说明原理。</p>
 <ul>
@@ -418,86 +379,135 @@ def search(request):
 [6]<a href="http://www.runoob.com/django/django-first-app.html">Django 创建第一个项目</a><br>
 [7]<a href="https://blog.csdn.net/zhangxinrun/article/details/8095118/">Django模板系统(非常详细)</a></p>
 
-          </div>
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-%E8%A6%81%E6%B1%82">1 要求</a></li>
+<li><a href="#2-%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F">2 运行方式</a></li>
+<li><a href="#3-%E6%89%80%E9%9C%80python%E5%BA%93">3 所需python库</a></li>
+<li><a href="#4-%E6%89%80%E9%9C%80%E6%95%B0%E6%8D%AE%E5%BA%93">4 所需数据库</a></li>
+<li><a href="#5-%E7%88%AC%E8%99%AB%E7%89%B9%E6%80%A7">5 爬虫特性</a>
+<ul>
+<li><a href="#51-%E7%88%AC%E5%8F%96%E5%86%85%E5%AE%B9">5.1 爬取内容</a></li>
+<li><a href="#52-%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%88%AC%E5%8F%96">5.2 宽度优先搜索爬取</a></li>
+<li><a href="#53-%E4%BA%8C%E5%88%86%E6%B3%95%E5%8E%BB%E9%87%8D">5.3 二分法去重</a></li>
+<li><a href="#54-%E6%96%AD%E7%82%B9%E7%BB%AD%E7%88%AC">5.4 断点续爬</a></li>
+<li><a href="#55-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb">5.5 数据存入MongoDB</a></li>
+</ul>
+</li>
+<li><a href="#6-%E7%B4%A2%E5%BC%95%E6%9E%84%E5%BB%BA%E7%89%B9%E6%80%A7">6 索引构建特性</a>
+<ul>
+<li><a href="#61-%E6%96%AD%E7%82%B9%E7%BB%AD%E6%9E%84">6.1 断点续构</a></li>
+<li><a href="#62-%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D">6.2 中文分词</a></li>
+<li><a href="#63-query%E7%B1%BB%E6%8F%90%E4%BE%9B%E6%90%9C%E7%B4%A2api">6.3 Query类提供搜索API</a></li>
+</ul>
+</li>
+<li><a href="#7-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%89%B9%E6%80%A7">7 搜索引擎特性</a>
+<ul>
+<li><a href="#71-django%E6%90%AD%E5%BB%BAweb%E7%95%8C%E9%9D%A2">7.1 Django搭建Web界面</a></li>
+<li><a href="#72-%E6%90%9C%E7%B4%A2%E8%BF%85%E9%80%9F">7.2 搜索迅速</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</a></li>
+</ul>
+</li>
+</ul>
+
+              </div>
+            </div>
+          </article>
         </div>
 
         
           <div class="next-post">
-            <a class="purple-link" href="https://www.rayiooo.top/post/joint-computation-and-communication-cooperation-for-energy-efficient-mobile-edge-computing-lun-wen-bi-ji/">
+            <div class="next">下一篇</div>
+            <a href="https://www.rayiooo.top/post/joint-computation-and-communication-cooperation-for-energy-efficient-mobile-edge-computing-lun-wen-bi-ji/">
               <h3 class="post-title">
-                下一篇：Joint Computation and Communication Cooperation for Energy-Efficient Mobile Edge Computing 论文笔记
+                Joint Computation and Communication Cooperation for Energy-Efficient Mobile Edge Computing 论文笔记
               </h3>
             </a>
           </div>
+        
+
+        
           
-      </div>
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-      
-        
-          <div id="gitalk-container"></div>
-        
+<div id="gitalk-container"></div>
 
-        
-      
+<script>
 
-      <div class="site-footer">
-  <div class="slogan">いらっしゃいませ</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://www.rayiooo.top/atom.xml" target="_blank">RSS</a>
-</div>
+  var gitalk = new Gitalk({
+    clientID: '93abc810d67f36742d48',
+    clientSecret: 'a5ba71cfb2c4bbf8eebf28116087a330aa6f21ba',
+    repo: 'rayiooo.github.io',
+    owner: 'rayiooo',
+    admin: ['rayiooo'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
 
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
+  gitalk.render('gitalk-container')
 
 </script>
 
+          
 
+          
+        
 
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+        <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://www.rayiooo.top/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
+
+      </div>
+    </div>
+
     <script>
+      hljs.initHighlightingOnLoad()
 
-      var gitalk = new Gitalk({
-        clientID: '93abc810d67f36742d48',
-        clientSecret: 'a5ba71cfb2c4bbf8eebf28116087a330aa6f21ba',
-        repo: 'rayiooo.github.io',
-        owner: 'rayiooo',
-        admin: ['rayiooo'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-      gitalk.render('gitalk-container')
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
+
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
+
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
     </script>
-  
-
-  
-
-
-
-
   </body>
 </html>
