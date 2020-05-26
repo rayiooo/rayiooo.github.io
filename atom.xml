@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://www.rayiooo.top</id>
     <title>猫崎板子</title>
-    <updated>2020-05-26T08:05:54.856Z</updated>
+    <updated>2020-05-26T08:15:29.621Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://www.rayiooo.top"/>
     <link rel="self" href="https://www.rayiooo.top/atom.xml"/>
@@ -28,6 +28,40 @@
 <p>索引构建和搜索功能用Python的Whoosh和jieba库实现。（由于lucene是java库，所以pyLucene库的安装极其麻烦，因此选用Python原生库Whoosh实现，并使用jieba进行中文分词。）</p>
 <p>搜索网页界面用django实现，页面模板套用<a href="http://www.bootcdn.cn/">BootCDN</a>。</p>
 </blockquote>
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-%E8%A6%81%E6%B1%82">1 要求</a></li>
+<li><a href="#2-%E8%BF%90%E8%A1%8C%E6%96%B9%E5%BC%8F">2 运行方式</a></li>
+<li><a href="#3-%E6%89%80%E9%9C%80python%E5%BA%93">3 所需python库</a></li>
+<li><a href="#4-%E6%89%80%E9%9C%80%E6%95%B0%E6%8D%AE%E5%BA%93">4 所需数据库</a></li>
+<li><a href="#5-%E7%88%AC%E8%99%AB%E7%89%B9%E6%80%A7">5 爬虫特性</a>
+<ul>
+<li><a href="#51-%E7%88%AC%E5%8F%96%E5%86%85%E5%AE%B9">5.1 爬取内容</a></li>
+<li><a href="#52-%E5%AE%BD%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%88%AC%E5%8F%96">5.2 宽度优先搜索爬取</a></li>
+<li><a href="#53-%E4%BA%8C%E5%88%86%E6%B3%95%E5%8E%BB%E9%87%8D">5.3 二分法去重</a></li>
+<li><a href="#54-%E6%96%AD%E7%82%B9%E7%BB%AD%E7%88%AC">5.4 断点续爬</a></li>
+<li><a href="#55-%E6%95%B0%E6%8D%AE%E5%AD%98%E5%85%A5mongodb">5.5 数据存入MongoDB</a></li>
+</ul>
+</li>
+<li><a href="#6-%E7%B4%A2%E5%BC%95%E6%9E%84%E5%BB%BA%E7%89%B9%E6%80%A7">6 索引构建特性</a>
+<ul>
+<li><a href="#61-%E6%96%AD%E7%82%B9%E7%BB%AD%E6%9E%84">6.1 断点续构</a></li>
+<li><a href="#62-%E4%B8%AD%E6%96%87%E5%88%86%E8%AF%8D">6.2 中文分词</a></li>
+<li><a href="#63-query%E7%B1%BB%E6%8F%90%E4%BE%9B%E6%90%9C%E7%B4%A2api">6.3 Query类提供搜索API</a></li>
+</ul>
+</li>
+<li><a href="#7-%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E7%89%B9%E6%80%A7">7 搜索引擎特性</a>
+<ul>
+<li><a href="#71-django%E6%90%AD%E5%BB%BAweb%E7%95%8C%E9%9D%A2">7.1 Django搭建Web界面</a></li>
+<li><a href="#72-%E6%90%9C%E7%B4%A2%E8%BF%85%E9%80%9F">7.2 搜索迅速</a></li>
+</ul>
+</li>
+<li><a href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99">参考资料</a></li>
+</ul>
+</li>
+</ul>
+</p>
 <h2 id="1-要求">1 要求</h2>
 <p>以下是检索的基本要求：可以利用lucene、nutch等开源工具，利用Python、Java等编程语言，但需要分别演示并说明原理。</p>
 <ul>
@@ -293,6 +327,41 @@ def search(request):
 ]]></summary>
         <content type="html"><![CDATA[<p>本文研究了移动边缘计算（MEC）中计算卸载（computation offloading）的优化问题。在边缘网络中如何分配用户的计算任务可以使整体耗电量最小？本文针对 User - Helper - AP 三点式模型求解这个问题的最优解。通过构建一个线性规划问题和一个非线性规划问题来分别解可分割任务和不可分割任务的最优耗电量，并使用拉格朗日乘子法和 KKT 条件等方法求出结果，以达到节约设备用电的目的。这篇文章没有什么特别的亮点，仅仅是 LP 问题的一个应用。</p>
 <!-- more -->
+<p><ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-introduction">1 Introduction</a></li>
+<li><a href="#2-system-model">2 System Model</a>
+<ul>
+<li><a href="#2a-%E6%97%B6%E9%97%B4%E6%A7%BD">2.A 时间槽</a></li>
+<li><a href="#2b-%E8%AE%A1%E7%AE%97%E5%8D%B8%E8%BD%BD%E7%9A%84%E4%BC%A0%E8%BE%93%E8%83%BD%E8%80%97">2.B 计算卸载的传输能耗</a></li>
+<li><a href="#2c-%E8%AE%A1%E7%AE%97%E8%83%BD%E8%80%97">2.C 计算能耗</a></li>
+</ul>
+</li>
+<li><a href="#3-problem-formulation">3 Problem Formulation</a>
+<ul>
+<li><a href="#3a-%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90">3.A 可行性分析</a></li>
+</ul>
+</li>
+<li><a href="#4-optimal-solution-to-p1">4 Optimal Solution to P1</a>
+<ul>
+<li><a href="#4a-%E5%AF%B9%E5%81%B6%E5%87%BD%E6%95%B0-g-%E7%9A%84%E6%8E%A8%E5%AF%BC">4.A 对偶函数 g 的推导</a></li>
+<li><a href="#4b-%E8%AE%A1%E7%AE%97-%CE%BB-%CE%BC-%E6%9C%80%E4%BC%98%E8%A7%A3%E6%9D%A5%E6%9C%80%E5%A4%A7%E5%8C%96-g">4.B 计算 λ &amp; μ 最优解来最大化 g</a></li>
+<li><a href="#4c-p1-%E9%97%AE%E9%A2%98%E7%9A%84%E6%9C%80%E4%BC%98%E5%8E%9F%E5%A7%8B%E8%A7%A3">4.C P1 问题的最优原始解</a></li>
+</ul>
+</li>
+<li><a href="#5-optimal-solution-to-p2">5 Optimal Solution to P2</a>
+<ul>
+<li><a href="#5a">5.A</a></li>
+</ul>
+</li>
+<li><a href="#6-numerical-results">6 Numerical Results</a></li>
+<li><a href="#7-conclusion">7 Conclusion</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+</li>
+</ul>
+</p>
 <h2 id="1-introduction">1 Introduction</h2>
 <p>介绍 User - Helper - AP 三点式 MEC 模型。</p>
 <h2 id="2-system-model">2 System Model</h2>
