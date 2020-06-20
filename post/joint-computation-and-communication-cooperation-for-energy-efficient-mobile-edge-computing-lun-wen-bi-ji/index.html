@@ -1,134 +1,137 @@
-
-<!DOCTYPE html>
 <html>
-  <head>
-    
-<meta charset="utf-8" >
 
-<title>Joint Computation and Communication Cooperation for Energy-Efficient Mobile Edge Computing 论文笔记 | 猫崎板子</title>
-<meta name="description" content="いらっしゃいませ">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://www.rayiooo.top/favicon.ico?v=1592644465001">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    Joint Computation and Communication Cooperation for Energy-Efficient Mobile Edge Computing 论文笔记 | 猫崎板子
+</title>
+<link rel="shortcut icon" href="https://www.rayiooo.top/favicon.ico?v=1592644876096">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://www.rayiooo.top/styles/main.css">
-
-
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://www.rayiooo.top/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-145147913-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                
 
-  gtag('config', 'UA-145147913-2');
-</script>
+                    
+                            
+</head>
 
-
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://www.rayiooo.top">
-        <img class="avatar" src="https://www.rayiooo.top/images/avatar.png?v=1592644465001" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://www.rayiooo.top">
-        <h1 class="site-title">猫崎板子</h1>
-      </a>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://www.rayiooo.top">
+                <img class="avatar" src="https://www.rayiooo.top/images/avatar.png?v=1592644876096" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    猫崎板子
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-            <div class="feature-container" style="background-image: url('https://www.rayiooo.top/post-images/joint-computation-and-communication-cooperation-for-energy-efficient-mobile-edge-computing-lun-wen-bi-ji.png')">
-            </div>
-          
-          <h2 class="post-title">Joint Computation and Communication Cooperation for Energy-Efficient Mobile Edge Computing 论文笔记</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2020-05-05</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://www.rayiooo.top/tag/-oSCsoUR6/">
-                    边缘计算
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://www.rayiooo.top/tag/OC5FTxffw1/">
-                    计算卸载
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://www.rayiooo.top/tag/a9xVVaYbXl/">
-                    线性规划
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <p>本文研究了移动边缘计算（MEC）中计算卸载（computation offloading）的优化问题。在边缘网络中如何分配用户的计算任务可以使整体耗电量最小？本文针对 User - Helper - AP 三点式模型求解这个问题的最优解。通过构建一个线性规划问题和一个非线性规划问题来分别解可分割任务和不可分割任务的最优耗电量，并使用拉格朗日乘子法和 KKT 条件等方法求出结果，以达到节约设备用电的目的。这篇文章没有什么特别的亮点，仅仅是 LP 问题的一个应用。</p>
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            Joint Computation and Communication Cooperation for Energy-Efficient Mobile Edge Computing 论文笔记
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-05-05</time>
+                            
+                                <a href="https://www.rayiooo.top/tag/-oSCsoUR6/" class="post-tag i-tag
+                            i-tag-error">
+                            #边缘计算
+                        </a>
+                                
+                                <a href="https://www.rayiooo.top/tag/OC5FTxffw1/" class="post-tag i-tag
+                            i-tag-primary">
+                            #计算卸载
+                        </a>
+                                
+                                <a href="https://www.rayiooo.top/tag/a9xVVaYbXl/" class="post-tag i-tag
+                            i-tag-">
+                            #线性规划
+                        </a>
+                                
+                        </div>
+                        
+                            <div class="post-feature-image" style="background-image: url('https://www.rayiooo.top/post-images/joint-computation-and-communication-cooperation-for-energy-efficient-mobile-edge-computing-lun-wen-bi-ji.png')"></div>
+                            
+                                <div class="post-content">
+                                    <p>本文研究了移动边缘计算（MEC）中计算卸载（computation offloading）的优化问题。在边缘网络中如何分配用户的计算任务可以使整体耗电量最小？本文针对 User - Helper - AP 三点式模型求解这个问题的最优解。通过构建一个线性规划问题和一个非线性规划问题来分别解可分割任务和不可分割任务的最优耗电量，并使用拉格朗日乘子法和 KKT 条件等方法求出结果，以达到节约设备用电的目的。这篇文章没有什么特别的亮点，仅仅是 LP 问题的一个应用。</p>
 <!-- more -->
 <h2 id="1-introduction">1 Introduction</h2>
 <p>介绍 User - Helper - AP 三点式 MEC 模型。</p>
@@ -194,78 +197,132 @@
 [7]<a href="https://blog.csdn.net/xiaohukun/article/details/78202351">拉格朗日乘子法（Lagrange Multiplier) 和KKT条件</a><br>
 [8]<a href="https://blog.csdn.net/bitcarmanlee/article/details/51896348">次导数 次梯度 小结</a></p>
 
-          </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li>
+<ul>
+<li><a href="#1-introduction">1 Introduction</a></li>
+<li><a href="#2-system-model">2 System Model</a>
+<ul>
+<li><a href="#2a-%E6%97%B6%E9%97%B4%E6%A7%BD">2.A 时间槽</a></li>
+<li><a href="#2b-%E8%AE%A1%E7%AE%97%E5%8D%B8%E8%BD%BD%E7%9A%84%E4%BC%A0%E8%BE%93%E8%83%BD%E8%80%97">2.B 计算卸载的传输能耗</a></li>
+<li><a href="#2c-%E8%AE%A1%E7%AE%97%E8%83%BD%E8%80%97">2.C 计算能耗</a></li>
+</ul>
+</li>
+<li><a href="#3-problem-formulation">3 Problem Formulation</a>
+<ul>
+<li><a href="#3a-%E5%8F%AF%E8%A1%8C%E6%80%A7%E5%88%86%E6%9E%90">3.A 可行性分析</a></li>
+</ul>
+</li>
+<li><a href="#4-optimal-solution-to-p1">4 Optimal Solution to P1</a>
+<ul>
+<li><a href="#4a-%E5%AF%B9%E5%81%B6%E5%87%BD%E6%95%B0-g-%E7%9A%84%E6%8E%A8%E5%AF%BC">4.A 对偶函数 g 的推导</a></li>
+<li><a href="#4b-%E8%AE%A1%E7%AE%97-%CE%BB-%CE%BC-%E6%9C%80%E4%BC%98%E8%A7%A3%E6%9D%A5%E6%9C%80%E5%A4%A7%E5%8C%96-g">4.B 计算 λ &amp; μ 最优解来最大化 g</a></li>
+<li><a href="#4c-p1-%E9%97%AE%E9%A2%98%E7%9A%84%E6%9C%80%E4%BC%98%E5%8E%9F%E5%A7%8B%E8%A7%A3">4.C P1 问题的最优原始解</a></li>
+</ul>
+</li>
+<li><a href="#5-optimal-solution-to-p2">5 Optimal Solution to P2</a>
+<ul>
+<li><a href="#5a">5.A</a></li>
+</ul>
+</li>
+<li><a href="#6-numerical-results">6 Numerical Results</a></li>
+<li><a href="#7-conclusion">7 Conclusion</a></li>
+<li><a href="#%E5%8F%82%E8%80%83">参考</a></li>
+</ul>
+</li>
+</ul>
+
         </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
 
-        
-      </div>
+                </div>
 
-      
-        
-          <div id="gitalk-container"></div>
-        
 
-        
-      
 
-      <div class="site-footer">
-  <div class="slogan">いらっしゃいませ</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://www.rayiooo.top/atom.xml" target="_blank">RSS</a>
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://www.rayiooo.top/atom.xml" target="_blank">RSS</a>
 </div>
 
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
 
-
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    </div>
     <script>
-
-      var gitalk = new Gitalk({
-        clientID: '93abc810d67f36742d48',
-        clientSecret: 'a5ba71cfb2c4bbf8eebf28116087a330aa6f21ba',
-        repo: 'rayiooo.github.io',
-        owner: 'rayiooo',
-        admin: ['rayiooo'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-
-      gitalk.render('gitalk-container')
-
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
     </script>
-  
+    
+        
+            <script>
+    window.onload = function() {
+        var gitalk = new Gitalk({
+            clientID: '93abc810d67f36742d48',
+            clientSecret: 'a5ba71cfb2c4bbf8eebf28116087a330aa6f21ba',
+            repo: 'rayiooo.github.io',
+            owner: 'rayiooo',
+            admin: ['rayiooo'],
+            id: (location.pathname).substring(0, 49), // Ensure uniqueness and length less than 50
+            distractionFreeMode: false // Facebook-like distraction free mode
+        })
 
-  
+        gitalk.render('gitalk-container')
+    }
+</script>
+                
 
+                    
+                                
+</body>
 
-
-
-  </body>
 </html>

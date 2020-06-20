@@ -1,124 +1,130 @@
-
-<!DOCTYPE html>
 <html>
-  <head>
-    
-<meta charset="utf-8" >
 
-<title>数据挖掘报告 - 智源 2019 人工智能大赛 一般水平的报告 | 猫崎板子</title>
-<meta name="description" content="いらっしゃいませ">
-
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css">
-
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
-<link rel="shortcut icon" href="https://www.rayiooo.top/favicon.ico?v=1592644465001">
+<head>
+    <meta charset="utf-8" />
+<meta name="description" content="" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>
+    数据挖掘报告 - 智源 2019 人工智能大赛 一般水平的报告 | 猫崎板子
+</title>
+<link rel="shortcut icon" href="https://www.rayiooo.top/favicon.ico?v=1592644876096">
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous"> -->
+<link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
 <link rel="stylesheet" href="https://www.rayiooo.top/styles/main.css">
-
-
-  
-    <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css" />
-  
-
-  
-
-
-<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<!-- js -->
+<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://www.rayiooo.top/media/js/jquery.sticky-sidebar.min.js"></script>
 <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/moment.js/2.23.0/moment.min.js"></script>
 
 
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-145147913-2"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+        
+            
+                <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+                <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+                
 
-  gtag('config', 'UA-145147913-2');
-</script>
+                    
+                            
+</head>
 
-
-  </head>
-  <body>
-    <div id="app" class="main">
-      <div class="site-header-container">
-  <div class="site-header">
-    <div class="left">
-      <a href="https://www.rayiooo.top">
-        <img class="avatar" src="https://www.rayiooo.top/images/avatar.png?v=1592644465001" alt="" width="32px" height="32px">
-      </a>
-      <a href="https://www.rayiooo.top">
-        <h1 class="site-title">猫崎板子</h1>
-      </a>
+<body>
+    <div class="main">
+        <div class="header">
+    <div class="nav">
+        <div class="logo">
+            <a href="https://www.rayiooo.top">
+                <img class="avatar" src="https://www.rayiooo.top/images/avatar.png?v=1592644876096" alt="">
+            </a>
+            <div class="site-title">
+                <h1>
+                    猫崎板子
+                </h1>
+            </div>
+        </div>
+        <span class="menu-btn fa fa-align-justify"></span>
+        <div class="menu-container">
+            <ul>
+                
+                    
+                            <li>
+                                <a href="/" class="menu">
+                                    首页
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/archives" class="menu">
+                                    归档
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/tags" class="menu">
+                                    标签
+                                </a>
+                            </li>
+                            
+                                
+                    
+                            <li>
+                                <a href="/post/about" class="menu">
+                                    关于
+                                </a>
+                            </li>
+                            
+                                
+            </ul>
+        </div>
     </div>
-    <div class="right">
-      <transition name="fade">
-        <i class="icon" :class="{ 'icon-close-outline': menuVisible, 'icon-menu-outline': !menuVisible }" @click="menuVisible = !menuVisible"></i>
-      </transition>
-    </div>
-  </div>
 </div>
 
-<transition name="fade">
-  <div class="menu-container" style="display: none;" v-show="menuVisible">
-    <div class="menu-list">
-      
-        
-          <a href="/" class="menu purple-link">
-            首页
-          </a>
-        
-      
-        
-          <a href="/archives" class="menu purple-link">
-            归档
-          </a>
-        
-      
-        
-          <a href="/tags" class="menu purple-link">
-            标签
-          </a>
-        
-      
-        
-          <a href="/post/about" class="menu purple-link">
-            关于
-          </a>
-        
-      
-    </div>
-  </div>
-</transition>
+<script>
+    $(document).ready(function() {
+        $(".menu-btn").click(function() {
+            $(".menu-container").slideToggle();
+        });
+        $(window).resize(function() {
 
+            if (window.matchMedia('(min-width: 960px)').matches) {
+                $(".menu-container").css('display', 'block')
+            } else {
+                $(".menu-container").css('display', 'none')
+            }
 
-      <div class="content-container">
-        <div class="post-detail">
-          
-          <h2 class="post-title">数据挖掘报告 - 智源 2019 人工智能大赛 一般水平的报告</h2>
-          <div class="post-info post-detail-info">
-            <span><i class="icon-calendar-outline"></i> 2020-06-20</span>
-            
-              <span>
-                <i class="icon-pricetags-outline"></i>
-                
-                  <a href="https://www.rayiooo.top/tag/OgzPW4oGB/">
-                    数据挖掘
-                    
-                      ，
-                    
-                  </a>
-                
-                  <a href="https://www.rayiooo.top/tag/ev80x2Gdl_/">
-                    决策树
-                    
-                  </a>
-                
-              </span>
-            
-          </div>
-          <div class="post-content">
-            <h1 id="data-mining-project-report">Data Mining Project Report</h1>
+        });
+    });
+</script>
+
+            <div id="main-content" class="post-detail main-container">
+                <!-- left -->
+                <div id="content" class="main-container-left">
+                    <article class="post i-card">
+                        <h2 class="post-title">
+                            数据挖掘报告 - 智源 2019 人工智能大赛 一般水平的报告
+                        </h2>
+                        <div class="post-info">
+                            <time class="post-time">2020-06-20</time>
+                            
+                                <a href="https://www.rayiooo.top/tag/OgzPW4oGB/" class="post-tag i-tag
+                            i-tag-banana">
+                            #数据挖掘
+                        </a>
+                                
+                                <a href="https://www.rayiooo.top/tag/ev80x2Gdl_/" class="post-tag i-tag
+                            i-tag-error">
+                            #决策树
+                        </a>
+                                
+                        </div>
+                        
+                                <div class="post-content">
+                                    <h1 id="data-mining-project-report">Data Mining Project Report</h1>
 <p>代码已托管在 <a href="https://github.com/rayiooo/python_datamining_rayiooo">https://github.com/rayiooo/python_datamining_rayiooo</a>。本报告内容针对的是&quot;Project3&quot;文件夹中的代码，使用 jupyter notebook 进行编写。</p>
 <h2 id="摘要">摘要</h2>
 <p>每天都有数以十万计的新问题以及 UGC 内容产生在知乎网站，如何高效的将这些用户新提出的问题邀请其他用户进行解答，以及挖掘用户有能力且感兴趣的问题进行邀请下发，优化邀请回答的准确率，提高问题解答率以及回答生产数，是亟待解决的一个问题。智源-看山杯专家发现算法大赛2019是解决该问题的竞赛，旨在精准邀请用户来提供优质回答。我在此竞赛中尽可能多地挖掘了用户、问题的信息以及用户和问题之间的关联信息，选择了具有弱分类效果的决策树作为学习模型，达到了较好的学习效果，能够比较精准地预测用户有意愿接受回答邀请的概率。</p>
@@ -285,86 +291,133 @@
 <p>本次比赛解决了在知识分享和问答社区进行精准邀请的问题，使得更高精准度的邀请投放成为可能。在该工作中，尽可能多地从已知的数据中挖掘出有用数据并进行利用是提升投放精准度的关键点，再配合模型参数的调整，最终达到了以较高精准度发送问答邀请的结果。</p>
 <p>本次比赛的代码已托管在 <a href="https://github.com/rayiooo/python_datamining_rayiooo">https://github.com/rayiooo/python_datamining_rayiooo</a>。</p>
 
-          </div>
+                                </div>
+                    </article>
+                    <!--  -->
+                    
+                        <div class="next-post">
+                            <div class="next">下一篇</div>
+                            <a href="https://www.rayiooo.top/post/xin-xi-jian-suo-ke-cheng-she-ji-zhi-sdu-xin-wen-wang-zhan-quan-zhan-pa-qu-suo-yin-gou-jian-sou-suo-yin-qing/">
+                                <h3 class="post-title">
+                                    信息检索课程设计之 SDU新闻网站Python全站爬取+索引构建+搜索引擎
+                                </h3>
+                            </a>
+                        </div>
+                        
+                            <div id="disqus_thread"></div>
+                            <div id="gitalk-container"></div>
+                </div>
+                <!-- middle -->
+                <div class="main-container-middle"></div>
+                <!-- right -->
+                <div id="sidebar" class="main-container-right">
+                    
+                        <!-- toc -->
+                        
+    <div class="toc-card i-card ">
+        <div class="toc-title i-card-title">目录</div>
+        <div class="toc-content">
+            <ul class="markdownIt-TOC">
+<li><a href="#data-mining-project-report">Data Mining Project Report</a>
+<ul>
+<li><a href="#%E6%91%98%E8%A6%81">摘要</a></li>
+<li><a href="#1-introduction">1 Introduction</a></li>
+<li><a href="#2-overview">2 Overview</a></li>
+<li><a href="#3-the-proposed-method">3 The Proposed Method</a>
+<ul>
+<li><a href="#31-invite-feature-mining">3.1 🏃 Invite Feature Mining</a></li>
+<li><a href="#32-user-feature-mining">3.2 🤡 User Feature Mining</a></li>
+<li><a href="#33-questions-answers-feature-mining">3.3 🙋 Question's Answers Feature Mining</a></li>
+<li><a href="#34-users-answers-feature-mining">3.4 🙋‍♂ User's Answers Feature Mining</a></li>
+<li><a href="#35-question-user-relationship-mining">3.5 👯 Question - User Relationship Mining</a></li>
+<li><a href="#36-model">3.6 🎲 Model</a></li>
+</ul>
+</li>
+<li><a href="#4-experiments">4 Experiments</a>
+<ul>
+<li><a href="#41-parameters-optimization">4.1 🕧 Parameters Optimization</a></li>
+<li><a href="#42-%EF%B8%8F-result">4.2 🀄️ Result</a></li>
+</ul>
+</li>
+<li><a href="#5-conclusion">5 Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
         </div>
+        <script>
+            function locateCatelogList() {
+                /*获取文章目录集合,可通过:header过滤器*/
+                var alis = $('.post-content :header');
+                /*获取侧边栏目录列表集合**/
+                var sidebar_alis = $('.markdownIt-TOC a');
+                /*获取滚动条到顶部的距离*/
+                var scroll_height = $(window).scrollTop();
+                for (var i = 0; i < alis.length; i++) {
+                    /*获取锚点集合中的元素分别到顶点的距离*/
+                    var a_height = $(alis[i]).offset().top;
+                    if (a_height < scroll_height) {
+                        /*高亮显示*/
+                        sidebar_alis.removeClass('on');
+                        $(sidebar_alis[i]).addClass('on');
+                    }
+                }
+            }
+            $(function() {
+                /*绑定滚动事件 */
+                $(window).bind('scroll', locateCatelogList);
+            });
+        </script>
+    </div>
+    
+                            
 
-        
-          <div class="next-post">
-            <a class="purple-link" href="https://www.rayiooo.top/post/xin-xi-jian-suo-ke-cheng-she-ji-zhi-sdu-xin-wen-wang-zhan-quan-zhan-pa-qu-suo-yin-gou-jian-sou-suo-yin-qing/">
-              <h3 class="post-title">
-                下一篇：信息检索课程设计之 SDU新闻网站Python全站爬取+索引构建+搜索引擎
-              </h3>
-            </a>
-          </div>
-          
-      </div>
+                </div>
 
-      
-        
-          <div id="gitalk-container"></div>
-        
 
-        
-      
 
-      <div class="site-footer">
-  <div class="slogan">いらっしゃいませ</div>
-  <div class="social-container">
-    
-      
-    
-      
-    
-      
-    
-      
-    
-      
-    
-  </div>
-  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | <a class="rss" href="https://www.rayiooo.top/atom.xml" target="_blank">RSS</a>
+
+            </div>
+
+
+            <div class="site-footer">
+  Powered by <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a> | 
+  <a class="rss" href="https://www.rayiooo.top/atom.xml" target="_blank">RSS</a>
 </div>
 
-
-    </div>
-    <script type="application/javascript">
-
-hljs.initHighlightingOnLoad()
-
-var app = new Vue({
-  el: '#app',
-  data: {
-    menuVisible: false,
-  },
-})
-
+<script>
+  hljs.initHighlightingOnLoad()
 </script>
 
 
-
-  
-    <script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+    </div>
     <script>
-
-      var gitalk = new Gitalk({
-        clientID: '93abc810d67f36742d48',
-        clientSecret: 'a5ba71cfb2c4bbf8eebf28116087a330aa6f21ba',
-        repo: 'rayiooo.github.io',
-        owner: 'rayiooo',
-        admin: ['rayiooo'],
-        id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
-        distractionFreeMode: false  // Facebook-like distraction free mode
-      })
-
-      gitalk.render('gitalk-container')
-
+        $('#sidebar').stickySidebar({
+            topSpacing: 80,
+            // bottomSpacing: 60
+        });
     </script>
-  
+    
+        
+            <script>
+    window.onload = function() {
+        var gitalk = new Gitalk({
+            clientID: '93abc810d67f36742d48',
+            clientSecret: 'a5ba71cfb2c4bbf8eebf28116087a330aa6f21ba',
+            repo: 'rayiooo.github.io',
+            owner: 'rayiooo',
+            admin: ['rayiooo'],
+            id: (location.pathname).substring(0, 49), // Ensure uniqueness and length less than 50
+            distractionFreeMode: false // Facebook-like distraction free mode
+        })
 
-  
+        gitalk.render('gitalk-container')
+    }
+</script>
+                
 
+                    
+                                
+</body>
 
-
-
-  </body>
 </html>
